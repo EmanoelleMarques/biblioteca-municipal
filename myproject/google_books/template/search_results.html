@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="get" action="{% url 'book_search' %}">
+        <input type="text" name="query" placeholder="Buscar livros">
+        <button type="submit">Buscar</button>
+    </form>
+    
+    {% if results %}
+    <ul>
+        {% for item in results['items'] %}
+        <li>{{ item['volumeInfo']['title'] }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nenhum resultado encontrado.</p>
+    {% endif %}
+</body>
+</html>
